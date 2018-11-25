@@ -45,7 +45,7 @@ def getTextFromJson():
     global count
     for file in os.listdir('tweetFiles'):
         print(file)
-        if count < 5:
+        if count < 30:
             with open('tweetFiles/' + file, "r") as f:
                 for line in f:
                     for key, value in json.loads(line).items():
@@ -91,6 +91,7 @@ data = remove_non_english_words(data)
 
 data = remove_empty_sent(data)
 
+print("PLS")
 def sent_to_words(sentences):
     for sentence in sentences:
         yield(gensim.utils.simple_preprocess(str(sentence), deacc=True))  # deacc=True removes punctuations
