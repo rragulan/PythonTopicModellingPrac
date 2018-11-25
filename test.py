@@ -33,6 +33,11 @@ stop_words = stopwords.words('english')
 from nltk.corpus import words
 eng_words = words.words('en')
 
+from langdetect import detect
+# to enforce consistent results, check github langdetect readme
+from langdetect import DetectorFactory
+DetectorFactory.seed = 0
+
 
 import os 
 dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -50,7 +55,13 @@ def getTextFromJson():
                 for line in f:
                     for key, value in json.loads(line).items():
                         if(key =="text"):
-                            array.append(value)
+                            # get english tweets
+                            try:
+                                if (detect(value)=="en"):
+                                    # print (detect(value))
+                                    array.append(value)
+                            except:
+                                pass
         count = count + 1
 
 def remove_stopwords(texts):
@@ -87,7 +98,7 @@ def remove_empty_sent(tweets) :
             res.append(tweet)
     return res
 
-data = remove_non_english_words(data)
+#data = remove_non_english_words(data)
 
 data = remove_empty_sent(data)
 
