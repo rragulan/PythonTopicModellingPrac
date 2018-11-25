@@ -52,13 +52,39 @@ def remove_stopwords(texts):
     return [[word for word in simple_preprocess(str(doc)) if word not in stop_words] for doc in texts]
 
 getTextFromJson('02.json')
-# getTextFromJson('03.json')
-# getTextFromJson('04.json')
-# getTextFromJson('05.json')
-# getTextFromJson('06.json')
-# getTextFromJson('07.json')
-# getTextFromJson('08.json')
-# getTextFromJson('09.json')
+getTextFromJson('03.json')
+getTextFromJson('04.json')
+getTextFromJson('05.json')
+getTextFromJson('06.json')
+getTextFromJson('07.json')
+getTextFromJson('08.json')
+getTextFromJson('09.json')
+
+getTextFromJson('35.json')
+getTextFromJson('36.json')
+getTextFromJson('37.json')
+getTextFromJson('38.json')
+getTextFromJson('39.json')
+getTextFromJson('40.json')
+getTextFromJson('41.json')
+getTextFromJson('42.json')
+
+
+getTextFromJson('43.json')
+getTextFromJson('44.json')
+getTextFromJson('45.json')
+getTextFromJson('46.json')
+getTextFromJson('47.json')
+getTextFromJson('48.json')
+getTextFromJson('49.json')
+
+getTextFromJson('52.json')
+getTextFromJson('53.json')
+getTextFromJson('54.json')
+getTextFromJson('55.json')
+getTextFromJson('56.json')
+getTextFromJson('57.json')
+getTextFromJson('58.json')
 
 data = array
 
