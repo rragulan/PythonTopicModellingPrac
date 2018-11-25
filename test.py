@@ -176,9 +176,9 @@ print('\nPerplexity: ', lda_model.log_perplexity(corpus))  # a measure of how go
 vis = pyLDAvis.gensim.prepare(lda_model, corpus, id2word)
 pyLDAvis.save_html(vis, 'LDA_Visualization.html')
 
-os.environ.update({'MALLET_HOME':r'C:/Users/Ragulan/Documents/PythonTopicModellingPractice/mallet-2.0.8/mallet-2.0.8/'})
+os.environ.update({'MALLET_HOME':r'home/ragulan550/pythonTest/mallet-2.0.8/mallet-2.0.8/'})
 
-mallet_path = 'C:\\Users\Ragulan\\Documents\\PythonTopicModellingPractice\\mallet-2.0.8\\mallet-2.0.8\\bin\\mallet' # update this path
+mallet_path = 'home\\ragulan550\\pythonTest\\mallet-2.0.8\\mallet-2.0.8\\bin\\mallet' # update this path
 print(mallet_path)
 ldamallet = gensim.models.wrappers.LdaMallet(mallet_path, corpus=corpus, num_topics=5, id2word=id2word)
 # Show Topics
