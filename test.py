@@ -40,14 +40,17 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 import requests
 
 array = []
-
+count = 0
 def getTextFromJson():
     for file in os.listdir('tweetFiles'):
-        with open('tweetFiles/' + file, "r") as f:
-            for line in f:
-                for key, value in json.loads(line).items():
-                    if(key =="text"):
-                        array.append(value)
+        print(file)
+        if(count < 5):
+            with open('tweetFiles/' + file, "r") as f:
+                for line in f:
+                    for key, value in json.loads(line).items():
+                        if(key =="text"):
+                            array.append(value)
+        count = count + 1
 
 def remove_stopwords(texts):
     return [[word for word in simple_preprocess(str(doc)) if word not in stop_words] for doc in texts]
