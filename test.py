@@ -39,12 +39,13 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 
 import requests
 
-array = []
 count = 0
+array = []
 def getTextFromJson():
+    global count
     for file in os.listdir('tweetFiles'):
         print(file)
-        if(count < 5):
+        if count < 5:
             with open('tweetFiles/' + file, "r") as f:
                 for line in f:
                     for key, value in json.loads(line).items():
