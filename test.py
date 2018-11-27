@@ -50,7 +50,7 @@ def getTextFromJson():
     global count
     for file in os.listdir('tweetFiles'):
         print(file)
-        if count < 30:
+        if count < 2:
             with open('tweetFiles/' + file, "r") as f:
                 for line in f:
                     for key, value in json.loads(line).items():
@@ -135,6 +135,17 @@ id2word = corpora.Dictionary(data_lemmatized)
 
 # Create Corpus
 texts = data_lemmatized
+
+model = gensim.models.Word2Vec(
+        data_lemmatized,
+        size=150,
+        window=10,
+        min_count=2,
+        workers=10)
+model.train(data_lemmatized, total_examples=len(data_lemmatized), epochs=10)
+
+w1="love"
+print(model.wv.most_similar(positive=w1, topn = 6))
 
 # Term Document Frequency
 corpus = [id2word.doc2bow(text) for text in texts]
