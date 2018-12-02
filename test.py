@@ -40,7 +40,6 @@ DetectorFactory.seed = 0
 
 
 import os 
-dir_path = os.path.dirname(os.path.realpath(__file__))
 
 import requests
 
@@ -50,7 +49,7 @@ def getTextFromJson():
     global count
     for file in os.listdir('tweetFiles'):
         print(file)
-        if count < 2:
+        if count < 500:
             with open('tweetFiles/' + file, "r") as f:
                 for line in f:
                     for key, value in json.loads(line).items():
@@ -136,16 +135,6 @@ id2word = corpora.Dictionary(data_lemmatized)
 # Create Corpus
 texts = data_lemmatized
 
-model = gensim.models.Word2Vec(
-        data_lemmatized,
-        size=150,
-        window=10,
-        min_count=2,
-        workers=10)
-model.train(data_lemmatized, total_examples=len(data_lemmatized), epochs=10)
-
-w1="love"
-print(model.wv.most_similar(positive=w1, topn = 6))
 
 # Term Document Frequency
 corpus = [id2word.doc2bow(text) for text in texts]
@@ -173,7 +162,6 @@ print('\nPerplexity: ', lda_model.log_perplexity(corpus))  # a measure of how go
 vis = pyLDAvis.gensim.prepare(lda_model, corpus, id2word)
 pyLDAvis.save_html(vis, 'LDA_Visualization.html')
 
-os.environ.update({'MALLET_HOME':r'home/ragulan550/pythonTest/mallet-2.0.8/mallet-2.0.8/'})
 
 mallet_path = 'home\\ragulan550\\pythonTest\\mallet-2.0.8\\mallet-2.0.8\\bin\\mallet' # update this path
 print(mallet_path)
